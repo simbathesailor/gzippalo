@@ -1,27 +1,42 @@
-# TSDX Bootstrap
+# Gzippalo
 
-This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
+A small wrapper around nodejs zlib and [glob](https://www.npmjs.com/package/glob) for gzipping the files
 
-## Local Development
+Installation
 
-Below is a list of commands you will probably find useful.
+```
+yarn add --dev gzippalo
 
-### `npm start` or `yarn start`
+```
 
-Runs the project in development/watch mode. Your project will be rebuilt upon changes. TSDX has a special logger for you convenience. Error messages are pretty printed and formatted for compatibility VS Code's Problems tab.
+Usage:
 
-<img src="https://user-images.githubusercontent.com/4060187/52168303-574d3a00-26f6-11e9-9f3b-71dbec9ebfcb.gif" width="600" />
+```javascript
+gzippalo({
+  pattern: '*.js?(.map)',
+  globOptions: {
+    cwd: `${__dirname}`,
+  },
+});
+```
 
-Your library will be rebuilt if you make edits.
+Options Types:
 
-### `npm run build` or `yarn build`
+```typescript
+interface IOptions {
+  globOptions: glob.IOptions;
+  pattern?: string;
+  updateInline?: boolean;
+  destination?: string;
+}
+```
 
-Bundles the package to the `dist` folder.
-The package is optimized and bundled with Rollup into multiple formats (CommonJS, UMD, and ES Module).
+glob.Ioptions is from @types/glob.
 
-<img src="https://user-images.githubusercontent.com/4060187/52168322-a98e5b00-26f6-11e9-8cf6-222d716b75ef.gif" width="600" />
+globOptions takes all the parameters, which are accepted by [glob](https://www.npmjs.com/package/glob)
 
-### `npm test` or `yarn test`
+### Pending:
 
-Runs the test watcher (Jest) in an interactive mode.
-By default, runs tests related to files changed since the last commit.
+Add support createGzip option forwarding
+
+https://nodejs.org/api/zlib.html#zlib_class_options
