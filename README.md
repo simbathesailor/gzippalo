@@ -5,8 +5,7 @@ A small wrapper around nodejs zlib and [glob](https://www.npmjs.com/package/glob
 Installation
 
 ```
-yarn add --dev gzippalo
-
+yarn add  gzippalo --dev
 ```
 
 Usage:
