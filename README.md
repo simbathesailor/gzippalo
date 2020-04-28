@@ -30,7 +30,7 @@ interface IOptions {
 }
 ```
 
-glob.Ioptions is from @types/glob.
+Note: glob.IOptions is from [@types/glob](https://www.npmjs.com/package/@types/glob)
 
 globOptions takes all the parameters, which are accepted by [glob](https://www.npmjs.com/package/glob)
 
