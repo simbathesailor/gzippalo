@@ -73,4 +73,4 @@ async function main(options: IOptions) {
   });
 }
 
-module.exports = main;
+export default main;

@@ -1,7 +1,21 @@
-import { sum } from '../src';
+import gzippalo from '../src';
+import fs from 'fs';
+import path from 'path';
 
-describe('blah', () => {
-  it('works', () => {
-    expect(sum(1, 1)).toEqual(2);
+afterEach(() => {
+  console.log('I am done ');
+});
+describe('gzip file generation suite', () => {
+  it('input.js.gz file get generated', () => {
+    gzippalo({
+      pattern: '*.js?(.map)',
+      globOptions: {
+        cwd: `${__dirname}`,
+      },
+    });
+
+    const A = fs.existsSync(path.join(__dirname, 'input.js.gz'));
+    expect(A).toBe(true);
+    fs.unlinkSync(path.join(__dirname, 'input.js.gz'));
   });
 });
